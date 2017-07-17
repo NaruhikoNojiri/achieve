@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_blog, only:[:edit, :update, :destroy]
   
   def index
@@ -15,10 +16,11 @@ class BlogsController < ApplicationController
   
   def create
     @blog = Blog.new(blogs_params)
+    @blog.user_id = current_user.id
     if @blog.save 
       redirect_to blogs_path, notice: "ブログを作成しました！"
     else
-      render 'new'
+      render :new
     end
   end
   
@@ -29,7 +31,7 @@ class BlogsController < ApplicationController
     if @blog.update(blogs_params)
       redirect_to blogs_path, notice: "ブログを編集しました！"
     else
-      render 'edit'
+      render :edit
     end
   end
   
