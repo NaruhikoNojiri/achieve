@@ -1,0 +1,2 @@
+module Users::OminauthCallbacksHelper
+end
