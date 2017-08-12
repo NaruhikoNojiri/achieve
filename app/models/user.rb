@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
   has_many :blogs
-
   mount_uploader :avatar, AvatarUploader
 
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
@@ -55,5 +54,5 @@ class User < ActiveRecord::Base
       update_without_password(params, *options)
     end
   end
-  
+
 end
