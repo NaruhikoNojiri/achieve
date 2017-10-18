@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_blog, only:[:edit, :update, :destroy]
+  before_action :set_blog, only:[:edit, :update, :destroy, :show]
 
   def index
     @blogs = Blog.all
@@ -46,6 +46,10 @@ class BlogsController < ApplicationController
     render :new if @blog.invalid?
   end
 
+  def show
+    @comment = @blog.comments.build
+    @comments = @blog.comments
+  end
 
   private
 

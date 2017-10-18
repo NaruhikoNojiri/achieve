@@ -9,8 +9,10 @@
                 <p>
                   <%= profile_img(blog.user) %>
                   <%= blog.user.name %>が投稿しました。
-                </p>            
+                </p>
+                <%= link_to blog_path(blog) do %>
                 <h4><strong>タイトル:<%=blog.title %></strong></h4>
+                <% end %>
                 <h4>作成者:<%=User.find(blog.user.id).name%></h4>
                 <p><%=blog.content %></p>
                 <%= link_to "編集",edit_blog_path(blog.id), class: 'btn btn-default btn-sm btn-success' %>
