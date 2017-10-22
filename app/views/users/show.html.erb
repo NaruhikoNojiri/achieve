@@ -5,7 +5,8 @@
       <h3>フォローユーザーの一覧</h3>
       <% @followed_users.each do |user| %>
         <p>
-          <%= profile_img(user) %>
+          <%= profile_img(user) %><br>
+          <%= user.name %><br>
           <%= user.email %>
         </p>
       <% end %>
