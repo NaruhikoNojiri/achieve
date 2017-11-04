@@ -41,7 +41,9 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.delivery_method = :letter_opener_web
-  BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
+
+  # configuration for only cloud9
+  # BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
 
   #### using sendgrid mail server
   # config.action_mailer.default_url_options = { host: 'http://localhost:3000/'}
