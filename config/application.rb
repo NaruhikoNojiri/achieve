@@ -26,5 +26,18 @@ module Achieve
     config.action_view.field_error_proc = proc { |html_tag, instance| html_tag }
 
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
+
+    config.generators do |g|
+      g.test_framework :rspec,
+        fixtures: true,
+        view_specs: false,
+        helper_specs: false,
+        routing_specs: false,
+        controller_specs: true,
+        request_specs: false
+      g.fixture_replacement :factory_girl, dir: "spec/factories"
+    end
+
+    config.web_console.development_only = false
   end
 end
